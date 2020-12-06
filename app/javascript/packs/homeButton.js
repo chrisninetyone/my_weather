@@ -1,13 +1,9 @@
 
 window.addEventListener('DOMContentLoaded', (event) => {
     const weatherButton = document.getElementById('weather-btn');
-    let long = ''
-    let lat = ''
-    // weatherButton.disabled = true
     weatherButton.addEventListener('click', async (e) => {
-        console.log('preventing default')
         e.preventDefault();
-        console.log('clicked')
+
         weatherButton.classList.add("loader");
 
         if(!navigator.geolocation) {
@@ -34,10 +30,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 longField.value = long;
 
                 document.getElementById('hidden-form').submit()
-                //fetch the api endpoint /index with lat and long
-                console.log('Your current position is:');
-                console.log(`Latitude : ${crd.latitude}`);
-                console.log(`Longitude: ${crd.longitude}`);
             }
 
             function error(err) {
