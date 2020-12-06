@@ -1,0 +1,36 @@
+<% require "json" %>
+
+
+<% if @response %>
+  Params: <%= params %>
+  <div>
+    <h2>Weather in <%= @response["name"] %></h2>
+
+  </div>
+  <div>
+    Weather: <%= @response["weather"] %>
+  </div>
+
+  <% def convert_to_f(kelvin_temp) %>
+    <% celsius_temp = kelvin_temp - 273.15 %>
+    <% farenheit_temp = celsius_temp * 9/5 + 32 %>
+    <% farenheit_temp.round() %>
+  <% end %>
+
+  <div class="weather">
+    <%= @response["weather"][0]["main"] %><br>
+    <%= @response["weather"][0]["description"] %><br>
+    <%= @response["weather"][0]["icon"] %><br>
+  </div>
+  <div class="main">
+    The temperature is <%= convert_to_f(@response["main"]["temp"]) %><br>
+    It feels like <%= convert_to_f(@response["main"]["feels_like"]) %><br>
+    Low of <%= convert_to_f(@response["main"]["temp_min"]) %><br>
+    High of <%= convert_to_f(@response["main"]["temp_max"]) %><br>
+    Pressure <%= @response["main"]["pressure"] %><br>
+    Humidity <%= @response["main"]["humidity"] %><br>
+  </div>
+  <%= @response %>
+
+
+<% end %>
