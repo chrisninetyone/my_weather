@@ -6,7 +6,7 @@ module Openweather
         def self.by_location(lat, long)
 
 
-        url = 'https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + long + '&appid=' + ENV['API_KEY']
+        url = 'https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + long + '&units=imperial&appid=' + ENV['API_KEY']
         response = RestClient.get(url)
         @response = JSON.parse(response)
 

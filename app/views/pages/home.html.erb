@@ -1,14 +1,17 @@
-<%= javascript_pack_tag 'homeButton' %>
 
-
-
-<div id="hidden-form">
-    <%= form_with(url: search_path, method: "get", local: true) do %>
+<%= form_with(url: search_path, method: "get", local: true, id: "hidden-form") do %>
     <%= hidden_field_tag(:lat) %>
 
     <%= hidden_field_tag(:long) %>
 
-    <%= submit_tag("Search") %>
+    <%= submit_tag("Submit?", id: "hidden-submit") %>
     <% end %>
-</div>
 
+
+    <div class="container">
+        <button id="weather-btn">How's the weather here?</button>
+
+    </div>
+
+
+    <%= javascript_pack_tag 'homeButton' %>

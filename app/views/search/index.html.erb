@@ -1,36 +1,67 @@
 <% require "json" %>
 
-
 <% if @response %>
-  Params: <%= params %>
-  <div>
-    <h2>Weather in <%= @response["name"] %></h2>
+  <div class="weather-container">
 
+    <div class="banner">
+      <h2>Weather in <%= @response["name"] %></h2>
+    </div>
+
+    <div class="section weather-top">
+      <% icon_id =  @response["weather"][0]["icon"] %>
+      <%= image_tag("icons/#{icon_id}.png") %><br>
+      <h2><%= @response["weather"][0]["main"] %></h2>
+      <i><%= @response["weather"][0]["description"] %></i><br>
+    </div>
+
+    <div class="section temp">
+      <p>The temperature is <%= @response["main"]["temp"]%>°</p>
+      <br>
+      <p>It feels like <%= @response["main"]["feels_like"] %>°</p>
+      <br>
+      <p>Low of <%= @response["main"]["temp_min"] %>°</p>
+      <br>
+      <p>High of <%= @response["main"]["temp_max"] %>°</p>
+      <br>
+      <p>Pressure at <%= @response["main"]["pressure"] %> hPa</p>
+      <br>
+      <p>Humidity at <%= @response["main"]["humidity"] %>%</p>
+      <br>
+    </div>
+
+    <div class="section">
+      <% sunrise_time = Time.at(@response["sys"]["sunrise"]) %>
+      <% sunrise_time = sunrise_time.strftime("%I:%M %p")  %>
+      <% sunset_time = Time.at(@response["sys"]["sunset"]) %>
+      <% sunset_time = sunset_time.strftime("%I:%M %p")  %>
+      Sunrise at <%= sunrise_time %>, Sunset at <%= sunset_time %>
+    </div>
+
+    <% if @response["clouds"] %>
+      <div class="section">
+        <%= @response["clouds"]["all"] %>% cloud coverage
+      </div>
+    <% end %>
+
+    <% if @response["wind"] %>
+      <div class="section">
+        <%= @response["wind"]["speed"] %> MPH winds at <%= @response["wind"]["deg"] %> degrees<br>
+      </div>
+    <% end %>
+
+    <% if @response["rain"] %>
+      <div class="section">
+        Rained <%= @response["rain"]["1h"] %>mm in the last hour.
+        <%= @response["rain"]["3h"] %>mm in the last 3 hours.
+      </div>
+    <% end %>
+
+    <% if @response["snow"] %>
+      <div class="snow">
+        Snowed <%= @response["snow"]["1h"] %>mm in the last hour.
+        <%= @response["snow"]["3h"] %>mm in the last 3 hours.
+      </div>
+    <% end %>
+    
   </div>
-  <div>
-    Weather: <%= @response["weather"] %>
-  </div>
-
-  <% def convert_to_f(kelvin_temp) %>
-    <% celsius_temp = kelvin_temp - 273.15 %>
-    <% farenheit_temp = celsius_temp * 9/5 + 32 %>
-    <% farenheit_temp.round() %>
-  <% end %>
-
-  <div class="weather">
-    <%= @response["weather"][0]["main"] %><br>
-    <%= @response["weather"][0]["description"] %><br>
-    <%= @response["weather"][0]["icon"] %><br>
-  </div>
-  <div class="main">
-    The temperature is <%= convert_to_f(@response["main"]["temp"]) %><br>
-    It feels like <%= convert_to_f(@response["main"]["feels_like"]) %><br>
-    Low of <%= convert_to_f(@response["main"]["temp_min"]) %><br>
-    High of <%= convert_to_f(@response["main"]["temp_max"]) %><br>
-    Pressure <%= @response["main"]["pressure"] %><br>
-    Humidity <%= @response["main"]["humidity"] %><br>
-  </div>
-  <%= @response %>
-
-
 <% end %>
