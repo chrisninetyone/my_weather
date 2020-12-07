@@ -34,9 +34,9 @@
     </div>
 
     <div class="section">
-      <%= sunrise_time = Time.at(@response["sys"]["sunrise"]).utc.getlocal %>
+      <% sunrise_time = Time.at(@response["sys"]["sunrise"]).utc.getlocal %>
       <% sunrise_time = sunrise_time.strftime("%I:%M %p")  %>
-      <%= sunset_time = Time.at(@response["sys"]["sunset"]).utc.getlocal %>
+      <% sunset_time = Time.at(@response["sys"]["sunset"]).utc.getlocal %>
       <% sunset_time = sunset_time.strftime("%I:%M %p")  %>
       <div class="sunrise-sunset">
         <%= image_tag("icons/sunrise.png") %> <b><%= sunrise_time %></b>
