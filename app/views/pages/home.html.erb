@@ -8,9 +8,20 @@
     <% end %>
 
 
-    <div class="container">
-        <button id="weather-btn">How's the weather here?</button>
+    <div class="home-container">
+        <div class="top">
+            <h2>Find out the weather in your city</h2>
+        </div>
+        <div class="bottom">
+            <div class="left">
 
+                <p>Keep track of the weather with just one click!</p>
+                <button id="weather-btn">Current Weather</button>
+            </div>
+            <div class="right">
+                <%= image_tag("icons/clima.svg", class: 'home-svg') %>
+            </div>
+        </div>
     </div>
 
 

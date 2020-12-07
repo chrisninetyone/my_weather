@@ -1,6 +1,7 @@
 
 window.addEventListener('DOMContentLoaded', (event) => {
     const weatherButton = document.getElementById('weather-btn');
+    // const weatherButton = document.querySelector('.btn');
     weatherButton.addEventListener('click', async (e) => {
         e.preventDefault();
 
