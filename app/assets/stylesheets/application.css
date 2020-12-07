@@ -97,10 +97,58 @@
     font-size: 24px;
 }
 
+.temp {
+    margin-top: 15px;
+}
+
 .temp > p {
     margin: 0 10px;
 }
 
+.weather-top {
+    margin-bottom: 5px;
+}
+
 .weather-top > h2 {
-    margin-bottom: 0;
+    margin: 10px 0;
+    font-size: 46px;
+}
+
+.weather-top > img {
+    width: 100px;
+}
+
+.banner > h2 {
+    font-size: 46px;
+    text-align: center;
+}
+
+.p1 {
+    font-size: 36px;
+}
+
+.p2 {
+    font-size: 28px;
+}
+
+.p3 {
+    font-size: 20px;
+}
+
+.sunrise-sunset {
+    margin-bottom: 10px;
+}
+
+.sunrise-sunset > img {
+    width: 30px;
+}
+
+.min-max {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.icon {
+    width: 30px;
 }
